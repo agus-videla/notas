@@ -13,9 +13,4 @@ class NotesViewModel : ViewModel() {
         val currentNote = NotesDB.select(1)
         noteModel.postValue(currentNote)
     }
-
-    fun getNoteQuantity(): Int {
-        return NotesDB.getSize()
-    }
-
 }

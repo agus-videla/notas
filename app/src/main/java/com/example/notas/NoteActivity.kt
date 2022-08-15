@@ -11,7 +11,8 @@ class NoteActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityNoteBinding
 
-    private val noteViewModel : NotesViewModel by viewModels()
+    private val noteViewModel : NotesViewModel = NotesViewModel()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

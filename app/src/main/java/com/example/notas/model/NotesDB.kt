@@ -2,7 +2,7 @@ package com.example.notas.model
 
 class NotesDB {
     companion object {
-        private val notes = listOf(
+        val notes = listOf(
             Note("Titulo", "Lorem Ipsum"),
             Note("Verduleria", "Frutas verduras"),
             Note("Idea", "Hacer app de notas"),
@@ -17,10 +17,6 @@ class NotesDB {
 
         fun select(id: Int) : Note {
             return notes[id]
-        }
-
-        fun getAll() : List<Note> {
-            return notes
         }
 
         fun getSize(): Int {
