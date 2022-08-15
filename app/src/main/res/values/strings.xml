@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Notas</string>
+    <string name="edit_icon">E</string>
+    <string name="delete_icon">D</string>
+    <string name="add_icon">+</string>
+</resources>
