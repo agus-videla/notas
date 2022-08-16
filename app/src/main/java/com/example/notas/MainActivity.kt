@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notas.databinding.ActivityMainBinding
 import com.example.notas.model.NotesDB
+import com.example.notas.recyclerview.NoteRecyclerViewAdapter
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,14 +15,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
         initRecyclerView()
     }
 
-    fun initRecyclerView() {
-        val recyclerview = findViewById<RecyclerView>(R.id.rvNotes)
-        recyclerview.layoutManager = LinearLayoutManager(this)
-        recyclerview.adapter = NoteRecyclerViewAdapter(NotesDB.notes)
+    private fun initRecyclerView() {
+        binding.rvNotes.layoutManager = LinearLayoutManager(this)
+        binding.rvNotes.adapter = NoteRecyclerViewAdapter(NotesDB.notes)
 
     }
 }

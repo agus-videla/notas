@@ -1,8 +1,9 @@
-package com.example.notas
+package com.example.notas.recyclerview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.notas.R
 import com.example.notas.model.Note
 
 class NoteRecyclerViewAdapter(private val notes: List<Note>) : RecyclerView.Adapter<NoteViewHolder>() {
