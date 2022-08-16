@@ -1,8 +1,7 @@
 package com.example.notas
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.notas.databinding.ActivityNoteBinding
 import com.example.notas.viewmodel.NotesViewModel
