@@ -3,7 +3,6 @@ package com.example.notas
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.notas.databinding.ActivityMainBinding
 import com.example.notas.model.NotesDB
 import com.example.notas.recyclerview.NoteRecyclerViewAdapter
@@ -22,6 +21,5 @@ class MainActivity : AppCompatActivity() {
     private fun initRecyclerView() {
         binding.rvNotes.layoutManager = LinearLayoutManager(this)
         binding.rvNotes.adapter = NoteRecyclerViewAdapter(NotesDB.notes)
-
     }
 }

@@ -10,7 +10,7 @@ class NotesViewModel : ViewModel() {
     val noteModel = MutableLiveData<Note?>()
 
     fun getNote() {
-        val currentNote = NotesDB.select(1)
+        val currentNote = NotesDB.notes[1]
         noteModel.postValue(currentNote)
     }
 }

@@ -10,9 +10,7 @@ import com.example.notas.viewmodel.NotesViewModel
 class NoteActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityNoteBinding
-
     private val noteViewModel : NotesViewModel = NotesViewModel()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
