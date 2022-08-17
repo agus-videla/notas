@@ -12,7 +12,7 @@ class NotesDB {
             Note("Super", "Yerba Cafe"),
             Note("Globant", "Estudiar Recycler View"),
             Note("Descargar", "black midi full album"),
-            Note("Nueva nota", "Cosas importantes que no tengo que olvidar"),
+            Note("Cosas Importantes", "Cosas importantes que no tengo que olvidar"),
             Note("Cosas para ir a la montaña", "Carpa, agua, abrigo, comida"),
             Note("Organizar", "Armar horario de actividades")
         )

@@ -3,4 +3,6 @@
     <string name="edit_icon">E</string>
     <string name="delete_icon">D</string>
     <string name="add_icon">+</string>
+    <string name="delete">Delete</string>
+    <string name="add">+</string>
 </resources>
