@@ -13,7 +13,7 @@ import com.example.notas.model.Note
 import com.example.notas.model.NotesDB
 import com.example.notas.recyclerview.NoteRecyclerViewAdapter
 
-class SummaryFragment : Fragment(){
+class SummaryFragment : Fragment() {
 
     private var mutableNoteList: MutableList<Note> = NotesDB.notes.toMutableList()
     private var _binding: FragmentSummaryBinding? = null

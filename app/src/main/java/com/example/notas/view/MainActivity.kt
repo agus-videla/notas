@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        replaceFragment(SummaryFragment())
+        replaceFragment(NoteFragment())
     }
 
     private fun replaceFragment(fragment: Fragment) {
