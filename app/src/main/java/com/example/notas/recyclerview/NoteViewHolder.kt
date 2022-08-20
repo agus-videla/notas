@@ -8,11 +8,11 @@ import com.example.notas.model.Note
 class NoteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val binding = RecyclerViewRowBinding.bind(view)
 
-    fun render(noteModel: Note, onClickListener: (Note) -> Unit, onClickDelete: (Int) -> Unit) {
+    fun render(noteModel: Note, onClickListener: (Int) -> Unit, onClickDelete: (Int) -> Unit) {
         binding.tvCardNoteTitle.text = noteModel.title
         binding.tvCardNoteBody.text = noteModel.body
-        binding.tvCardNoteTitle.setOnClickListener {
-            onClickListener(noteModel)
+        binding.cardView.setOnClickListener {
+            onClickListener(adapterPosition)
         }
         binding.btnDelete.setOnClickListener {
             onClickDelete(adapterPosition)

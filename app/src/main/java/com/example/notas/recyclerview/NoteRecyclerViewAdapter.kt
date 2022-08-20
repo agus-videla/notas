@@ -8,7 +8,7 @@ import com.example.notas.model.Note
 
 class NoteRecyclerViewAdapter(
     private val notes: List<Note>,
-    private val onClickListener: (Note) -> Unit,
+    private val onClickListener: (Int) -> Unit,
     private val onClickDelete: (Int) -> Unit
 ) : RecyclerView.Adapter<NoteViewHolder>() {
 

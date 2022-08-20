@@ -12,13 +12,14 @@ import com.example.notas.databinding.FragmentSummaryBinding
 import com.example.notas.model.Note
 import com.example.notas.model.NotesDB
 import com.example.notas.recyclerview.NoteRecyclerViewAdapter
+import com.example.notas.viewmodel.NotesViewModel
 
-class SummaryFragment : Fragment() {
+class SummaryFragment(private val mutableNoteList: MutableList<Note>) : Fragment() {
 
-    private var mutableNoteList: MutableList<Note> = NotesDB.notes.toMutableList()
     private var _binding: FragmentSummaryBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: NoteRecyclerViewAdapter
+    private val noteViewModel = NotesViewModel()
     private val llmanager: LinearLayoutManager = LinearLayoutManager(this.context)
 
     override fun onCreateView(
@@ -46,15 +47,17 @@ class SummaryFragment : Fragment() {
     private fun initRecyclerView() {
         adapter = NoteRecyclerViewAdapter(
             mutableNoteList,
-            { note -> onItemSelected(note) },
+            { position -> onItemSelected(position) },
             { position -> onItemDeleted(position) }
         )
         binding.rvNotes.layoutManager = llmanager
         binding.rvNotes.adapter = adapter
     }
 
-    private fun onItemSelected(note: Note) {
-        Toast.makeText(this.context, note.title, Toast.LENGTH_SHORT).show()
+    private fun onItemSelected(position: Int) {
+        Toast.makeText(this.context, position.toString(), Toast.LENGTH_SHORT).show()
+        noteViewModel.setCurrent(position)
+        (activity as MainActivity?)!!.replaceFragment(NoteFragment(noteViewModel))
     }
 
     private fun onItemDeleted(position: Int) {

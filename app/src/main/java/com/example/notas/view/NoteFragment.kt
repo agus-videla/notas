@@ -9,11 +9,10 @@ import androidx.lifecycle.Observer
 import com.example.notas.databinding.FragmentNoteBinding
 import com.example.notas.viewmodel.NotesViewModel
 
-class NoteFragment : Fragment() {
+class NoteFragment(private val noteViewModel: NotesViewModel) : Fragment() {
 
     private var _binding: FragmentNoteBinding? = null
     private val binding get() = _binding!!
-    private val noteViewModel: NotesViewModel = NotesViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,10 +29,7 @@ class NoteFragment : Fragment() {
             binding.tvNoteTitle.text = it!!.title
             binding.tvNoteBody.text = it.body
         })
-
-        binding.constraintLayout.setOnClickListener {
-            noteViewModel.getNote()
-        }
+        noteViewModel.getNote()
     }
 
 }
