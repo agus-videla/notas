@@ -20,7 +20,7 @@ class NoteFragment() : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentNoteBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -28,7 +28,7 @@ class NoteFragment() : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         noteViewModel.noteModel.observe(viewLifecycleOwner, Observer {
-            binding.tvNoteTitle.text = it!!.title
+            binding.tvNoteTitle.text = it.title
             binding.tvNoteBody.text = it.body
         })
         noteViewModel.getNote()

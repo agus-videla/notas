@@ -22,8 +22,8 @@ class SummaryFragment() : Fragment() {
     private val noteViewModel: NotesViewModel by activityViewModels()
     private var _binding: FragmentSummaryBinding? = null
     private val binding get() = _binding!!
+    private lateinit var llmanager: LinearLayoutManager
     private lateinit var adapter: NoteRecyclerViewAdapter
-    private val llmanager: LinearLayoutManager = LinearLayoutManager(this.context)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,6 +48,7 @@ class SummaryFragment() : Fragment() {
     }
 
     private fun initRecyclerView() {
+        llmanager = LinearLayoutManager(this.context)
         adapter = NoteRecyclerViewAdapter(
             mutableNoteList,
             { position -> onItemSelected(position) },

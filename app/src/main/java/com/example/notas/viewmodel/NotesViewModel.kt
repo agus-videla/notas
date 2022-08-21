@@ -7,7 +7,7 @@ import com.example.notas.model.NotesDB
 
 class NotesViewModel : ViewModel() {
 
-    val noteModel = MutableLiveData<Note?>()
+    val noteModel = MutableLiveData<Note>()
     var currentNote: Int = 0
 
     fun getNote() {
