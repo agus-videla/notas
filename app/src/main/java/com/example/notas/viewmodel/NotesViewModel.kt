@@ -8,14 +8,14 @@ import com.example.notas.model.NotesDB
 class NotesViewModel : ViewModel() {
 
     val noteModel = MutableLiveData<Note>()
-    var currentNote: Int = 0
+    var currentIndex: Int = 0
 
     fun getNote() {
-        val currentNote = NotesDB.notes[currentNote]
+        val currentNote = NotesDB.notes[currentIndex]
         noteModel.postValue(currentNote)
     }
 
     fun setCurrent(current: Int) {
-        currentNote = current
+        currentIndex = current
     }
 }
