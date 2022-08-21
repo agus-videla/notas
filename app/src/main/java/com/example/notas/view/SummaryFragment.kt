@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.notas.R
 import com.example.notas.databinding.FragmentSummaryBinding
@@ -17,10 +19,10 @@ import com.example.notas.viewmodel.NotesViewModel
 class SummaryFragment() : Fragment() {
 
     private var mutableNoteList: MutableList<Note> = NotesDB.notes.toMutableList()
+    private val noteViewModel: NotesViewModel by activityViewModels()
     private var _binding: FragmentSummaryBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: NoteRecyclerViewAdapter
-    private val noteViewModel = NotesViewModel()
     private val llmanager: LinearLayoutManager = LinearLayoutManager(this.context)
 
     override fun onCreateView(
@@ -41,8 +43,8 @@ class SummaryFragment() : Fragment() {
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
         _binding = null
+        super.onDestroyView()
     }
 
     private fun initRecyclerView() {
@@ -56,8 +58,9 @@ class SummaryFragment() : Fragment() {
     }
 
     private fun onItemSelected(position: Int) {
-        Toast.makeText(this.context, position.toString(), Toast.LENGTH_SHORT).show()
         noteViewModel.setCurrent(position)
+        val action = SummaryFragmentDirections.actionSummaryFragmentToNoteFragment()
+        findNavController().navigate(action)
     }
 
     private fun onItemDeleted(position: Int) {
