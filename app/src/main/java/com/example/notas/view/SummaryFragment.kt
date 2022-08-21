@@ -14,8 +14,9 @@ import com.example.notas.model.NotesDB
 import com.example.notas.recyclerview.NoteRecyclerViewAdapter
 import com.example.notas.viewmodel.NotesViewModel
 
-class SummaryFragment(private val mutableNoteList: MutableList<Note>) : Fragment() {
+class SummaryFragment() : Fragment() {
 
+    private var mutableNoteList: MutableList<Note> = NotesDB.notes.toMutableList()
     private var _binding: FragmentSummaryBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: NoteRecyclerViewAdapter
@@ -57,7 +58,6 @@ class SummaryFragment(private val mutableNoteList: MutableList<Note>) : Fragment
     private fun onItemSelected(position: Int) {
         Toast.makeText(this.context, position.toString(), Toast.LENGTH_SHORT).show()
         noteViewModel.setCurrent(position)
-        (activity as MainActivity?)!!.replaceFragment(NoteFragment(noteViewModel))
     }
 
     private fun onItemDeleted(position: Int) {
