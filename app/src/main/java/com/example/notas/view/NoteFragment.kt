@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import com.example.notas.databinding.FragmentNoteBinding
 import com.example.notas.viewmodel.NotesViewModel
 
-class NoteFragment() : Fragment() {
+class NoteFragment : Fragment() {
 
     private var _binding: FragmentNoteBinding? = null
     private val noteViewModel: NotesViewModel by activityViewModels()

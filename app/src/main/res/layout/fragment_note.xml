@@ -11,45 +11,48 @@
         android:id="@+id/tvNoteBody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="16dp"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="@id/tvNoteTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvNoteTitle"
         tools:text="this is supposed to be a really long note" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="409dp"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:padding="1dp"
+    <TextView
+        android:id="@+id/tvNoteTitle"
+        android:lines="1"
+        android:scrollHorizontally="true"
+        android:ellipsize="end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textAlignment="viewStart"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toStartOf="@+id/bEdit"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="This is a title" />
 
-        <TextView
-            android:id="@+id/tvNoteTitle"
-            android:layout_width="305dp"
-            android:layout_height="wrap_content"
-            android:textAlignment="viewStart"
-            android:textSize="32sp"
-            tools:text="This is a title" />
+    <Button
+        android:id="@+id/bEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/edit_icon"
+        app:layout_constraintEnd_toStartOf="@+id/bDelete"
+        app:layout_constraintStart_toEndOf="@+id/tvNoteTitle"
+        app:layout_constraintTop_toTopOf="@id/tvNoteTitle" />
 
-        <Button
-            android:id="@+id/bEdit"
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/edit_icon" />
-
-        <Button
-            android:id="@+id/bDelete"
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/delete_icon" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/bDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/delete_icon"
+        app:layout_constraintLeft_toRightOf="@id/bEdit"
+        app:layout_constraintTop_toTopOf="@id/tvNoteTitle"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="11dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
