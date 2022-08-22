@@ -49,7 +49,8 @@ class SummaryFragment() : Fragment() {
 
     private fun initRecyclerView() {
         llmanager = LinearLayoutManager(this.context)
-        adapter = NoteRecyclerViewAdapter( mutableNoteList,
+        adapter = NoteRecyclerViewAdapter(
+            mutableNoteList, //todo utilizar livedata con el recycler view
             { position -> onItemSelected(position) },
             { position -> onItemDeleted(position) }
         )
@@ -57,6 +58,7 @@ class SummaryFragment() : Fragment() {
         binding.rvNotes.adapter = adapter
     }
 
+    //todo Dónde colocar estas funciones?
     private fun onItemSelected(position: Int) {
         noteViewModel.setCurrent(position)
         val action = SummaryFragmentDirections.actionSummaryFragmentToNoteFragment()

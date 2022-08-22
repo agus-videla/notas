@@ -33,5 +33,4 @@ class NoteFragment() : Fragment() {
         })
         noteViewModel.getNote()
     }
-
 }
