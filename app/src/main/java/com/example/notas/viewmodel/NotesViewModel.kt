@@ -7,17 +7,20 @@ import com.example.notas.model.Note
 import com.example.notas.model.NotesDB
 
 class NotesViewModel : ViewModel() {
-    private val _allNotes = MutableLiveData<MutableList<Note>>()
-    private val _currentNote = MutableLiveData<Note>()
+    private val _allNotes = MutableLiveData<MutableList<Note>>(NotesDB.notes.toMutableList())
+    private val _currentNote = MutableLiveData<Note>(NotesDB.notes[0])
     val allNotes: LiveData<MutableList<Note>> get() = _allNotes
     val currentNote: LiveData<Note> get() = _currentNote
 
-    fun startModel() {
-        _allNotes.value = NotesDB.notes
-        _currentNote.value = NotesDB.notes[0]
-    }
-
     fun setCurrentNote(index: Int) {
         _currentNote.value = NotesDB.notes[index]
+    }
+
+    fun removeNoteAt(index: Int) {
+        _allNotes.value?.removeAt(index)
+    }
+
+    fun addNoteAt(index: Int, note: Note) {
+        _allNotes.value?.add(index, note)
     }
 }
