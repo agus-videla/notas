@@ -36,6 +36,7 @@ class SummaryFragment() : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        noteViewModel.startModel()
         binding.btnAdd.setOnClickListener {
             onItemAdded((1..mutableNoteList.size).random())
         }
@@ -59,8 +60,8 @@ class SummaryFragment() : Fragment() {
     }
 
     //todo Dónde colocar estas funciones?
-    private fun onItemSelected(position: Int) {
-        noteViewModel.setCurrent(position)
+    private fun onItemSelected(index: Int) {
+        noteViewModel.setCurrentNote(index)
         val action = SummaryFragmentDirections.actionSummaryFragmentToNoteFragment()
         findNavController().navigate(action)
     }

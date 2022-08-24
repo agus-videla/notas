@@ -2,7 +2,7 @@ package com.example.notas.model
 
 class NotesDB {
     companion object {
-        val notes = listOf(
+        val notes = mutableListOf(
             Note("Titulo", "Lorem Ipsum"),
             Note("Verduleria", "Frutas verduras"),
             Note("Idea", "Hacer app de notas"),
