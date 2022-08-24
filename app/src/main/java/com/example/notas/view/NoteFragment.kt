@@ -28,8 +28,8 @@ class NoteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         noteViewModel.currentNote.observe(viewLifecycleOwner, Observer {
-                binding.tvNoteTitle.text = it.title
-                binding.tvNoteBody.text = it.body
+                binding.edNoteTitle.text = it.title
+                binding.edNoteBody.text = it.body
             })
         }
 }
