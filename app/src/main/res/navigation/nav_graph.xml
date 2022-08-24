@@ -13,6 +13,10 @@
         <action
             android:id="@+id/action_summaryFragment_to_noteFragment"
             app:destination="@id/noteFragment" />
+        <action
+            android:id="@+id/action_summaryFragment_to_editNoteFragment"
+            app:destination="@id/editNoteFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/noteFragment"
@@ -31,6 +35,7 @@
         <action
             android:id="@+id/action_editNoteFragment_to_noteFragment"
             app:destination="@id/noteFragment"
-            app:popUpTo="@id/noteFragment" />
+            app:popUpTo="@id/summaryFragment"
+            app:popUpToInclusive="false" />
     </fragment>
 </navigation>

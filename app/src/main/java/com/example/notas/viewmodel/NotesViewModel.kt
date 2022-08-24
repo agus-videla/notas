@@ -16,11 +16,21 @@ class NotesViewModel : ViewModel() {
         _currentNote.value = _allNotes.value?.get(index)
     }
 
+    fun setCurrentEmptyNote() {
+        val highestStoredId = _allNotes.value?.lastIndex ?: -1
+        _currentNote.value = Note(highestStoredId+1,"","")
+    }
+
     fun removeNoteAt(index: Int) {
         _allNotes.value?.removeAt(index)
     }
 
     fun addNote(note: Note) {
         _allNotes.value?.add(note)
+    }
+
+    fun isStored(note: Note?): Boolean {
+        val highestStoredId = _allNotes.value?.lastIndex ?: -1
+        return note!!.id <= highestStoredId
     }
 }

@@ -73,10 +73,9 @@ class SummaryFragment() : Fragment() {
     }
 
     private fun onItemAdded() {
-        val index = noteViewModel.allNotes.value!!.size
-        noteViewModel.addNote(Note(index, "Nueva Nota", "Soy muy importante"))
-        adapter.notifyItemInserted(index)
-        llmanager.scrollToPosition(index)
+        noteViewModel.setCurrentEmptyNote()
+        val action = SummaryFragmentDirections.actionSummaryFragmentToEditNoteFragment()
+        findNavController().navigate(action)
     }
 
 }

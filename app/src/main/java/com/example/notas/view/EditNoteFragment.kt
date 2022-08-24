@@ -9,7 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.notas.databinding.FragmentEditNoteBinding
-import com.example.notas.databinding.FragmentSummaryBinding
+import com.example.notas.model.Note
 import com.example.notas.viewmodel.NotesViewModel
 
 class EditNoteFragment : Fragment() {
@@ -28,22 +28,32 @@ class EditNoteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnDone.setOnClickListener{
+        binding.btnDone.setOnClickListener {
             noteViewModel.currentNote.observe(viewLifecycleOwner, Observer {
-                it.title = binding.edNoteTitle.text.toString()
-                it.body = binding.edNoteBody.text.toString()
+                saveChanges(it)
             })
             val action = EditNoteFragmentDirections.actionEditNoteFragmentToNoteFragment()
             findNavController().navigate(action)
         }
         noteViewModel.currentNote.observe(viewLifecycleOwner, Observer {
-            binding.edNoteTitle.setText(it.title)
-            binding.edNoteBody.setText(it.body)
+            renderNote(it)
         })
     }
 
     override fun onDestroy() {
         _binding = null
         super.onDestroy()
+    }
+
+    private fun renderNote(note: Note) {
+        binding.edNoteTitle.setText(note.title)
+        binding.edNoteBody.setText(note.body)
+    }
+
+    private fun saveChanges(note: Note) {
+        note.title = binding.edNoteTitle.text.toString()
+        note.body = binding.edNoteBody.text.toString()
+        if (!noteViewModel.isStored(note))
+            noteViewModel.addNote(note)
     }
 }
