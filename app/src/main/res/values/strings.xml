@@ -5,4 +5,5 @@
     <string name="add_icon">+</string>
     <string name="delete">Delete</string>
     <string name="add">+</string>
+    <string name="done_icon">D</string>
 </resources>

@@ -5,10 +5,10 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.NoteFragment">
+    tools:context=".view.EditNoteFragment">
 
-    <TextView
-        android:id="@+id/tvNoteTitle"
+    <EditText
+        android:id="@+id/edNoteTitle"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_margin="8dp"
@@ -18,21 +18,21 @@
         android:maxLines="1"
         android:ellipsize="end"
         app:layout_constraintBottom_toTopOf="@id/guideline"
-        app:layout_constraintEnd_toStartOf="@id/btnEdit"
+        app:layout_constraintEnd_toStartOf="@id/btnDone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0"
-        tools:text="Title" />
+        android:autofillHints="escribir aca" />
 
     <Button
-        android:id="@+id/btnEdit"
+        android:id="@+id/btnDone"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:text="@string/edit_icon"
+        android:text="@string/done_icon"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tvNoteTitle"
+        app:layout_constraintStart_toEndOf="@id/edNoteTitle"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -42,8 +42,8 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="58dp" />
 
-    <TextView
-        android:id="@+id/tvNoteBody"
+    <EditText
+        android:id="@+id/edNoteBody"
         android:layout_width="0dp"
         android:layout_height="0dp"
         tools:text="This is the note body"

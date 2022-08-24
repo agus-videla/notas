@@ -37,7 +37,7 @@ class SummaryFragment() : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnAdd.setOnClickListener {
-            onItemAdded((0..(noteViewModel.allNotes.value?.size ?: 0)).random())
+            onItemAdded()
         }
         initRecyclerView()
     }
@@ -72,8 +72,9 @@ class SummaryFragment() : Fragment() {
         adapter.notifyItemRemoved(index)
     }
 
-    private fun onItemAdded(index: Int) {
-        noteViewModel.addNoteAt(index, Note("Nueva Nota", "Soy muy importante"))
+    private fun onItemAdded() {
+        val index = noteViewModel.allNotes.value!!.size
+        noteViewModel.addNote(Note(index, "Nueva Nota", "Soy muy importante"))
         adapter.notifyItemInserted(index)
         llmanager.scrollToPosition(index)
     }

@@ -13,14 +13,14 @@ class NotesViewModel : ViewModel() {
     val currentNote: LiveData<Note> get() = _currentNote
 
     fun setCurrentNote(index: Int) {
-        _currentNote.value = NotesDB.notes[index]
+        _currentNote.value = _allNotes.value?.get(index)
     }
 
     fun removeNoteAt(index: Int) {
         _allNotes.value?.removeAt(index)
     }
 
-    fun addNoteAt(index: Int, note: Note) {
-        _allNotes.value?.add(index, note)
+    fun addNote(note: Note) {
+        _allNotes.value?.add(note)
     }
 }

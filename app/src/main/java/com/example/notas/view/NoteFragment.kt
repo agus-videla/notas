@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.notas.databinding.FragmentNoteBinding
 import com.example.notas.viewmodel.NotesViewModel
 
@@ -28,8 +29,12 @@ class NoteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         noteViewModel.currentNote.observe(viewLifecycleOwner, Observer {
-                binding.edNoteTitle.text = it.title
-                binding.edNoteBody.text = it.body
+                binding.tvNoteTitle.text = it.title
+                binding.tvNoteBody.text = it.body
             })
+        binding.btnEdit.setOnClickListener {
+            val action = NoteFragmentDirections.actionNoteFragmentToEditNoteFragment()
+            findNavController().navigate(action)
         }
+    }
 }

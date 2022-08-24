@@ -3,18 +3,18 @@ package com.example.notas.model
 class NotesDB {
     companion object {
         val notes = listOf(
-            Note("Titulo", "Lorem Ipsum"),
-            Note("Verduleria", "Frutas verduras"),
-            Note("Idea", "Hacer app de notas"),
-            Note("Ferreteria", "Tornillos, Tuercas"),
-            Note("Importante!!", "Pasear al perro"),
-            Note("Tareas", "Entregar TP el martes"),
-            Note("Super", "Yerba Cafe"),
-            Note("Globant", "Estudiar Recycler View"),
-            Note("Descargar", "black midi full album"),
-            Note("Cosas Importantes", "Cosas importantes que no tengo que olvidar"),
-            Note("Cosas para ir a la montaña", "Carpa, agua, abrigo, comida"),
-            Note("Organizar", "Armar horario de actividades")
+            Note(0, "Titulo", "Lorem Ipsum"),
+            Note(1, "Verduleria", "Frutas verduras"),
+            Note(2, "Idea", "Hacer app de notas"),
+            Note(3, "Ferreteria", "Tornillos, Tuercas"),
+            Note(4, "Importante!!", "Pasear al perro"),
+            Note(5, "Tareas", "Entregar TP el martes"),
+            Note(6, "Super", "Yerba Cafe"),
+            Note(7, "Globant", "Estudiar Recycler View"),
+            Note(8, "Descargar", "black midi full album"),
+            Note(9, "Cosas Importantes", "Cosas importantes que no tengo que olvidar"),
+            Note(10,"Cosas para ir a la montaña", "Carpa, agua, abrigo, comida"),
+            Note(11,"Organizar", "Armar horario de actividades")
         )
     }
 }
