@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.notas.R
@@ -15,7 +16,11 @@ import com.example.notas.databinding.FragmentSummaryBinding
 import com.example.notas.model.Note
 import com.example.notas.model.NotesDB
 import com.example.notas.recyclerview.NoteRecyclerViewAdapter
+import com.example.notas.utils.ApplicationStates
 import com.example.notas.viewmodel.NotesViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class SummaryFragment() : Fragment() {
 
@@ -39,7 +44,19 @@ class SummaryFragment() : Fragment() {
         binding.btnAdd.setOnClickListener {
             onItemAdded()
         }
-        initRecyclerView()
+        lifecycleScope.launch(Dispatchers.Main) {
+            withContext(Dispatchers.IO) { noteViewModel.setNotes() }
+        }
+        noteViewModel.loadingState.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is ApplicationStates.Loading -> binding.loadingSpinner.visibility = View.VISIBLE
+                is ApplicationStates.Success -> {
+                    initRecyclerView()
+                    binding.loadingSpinner.visibility = View.GONE
+                }
+                is ApplicationStates.Error -> print("error")
+            }
+        })
     }
 
     override fun onDestroyView() {
