@@ -14,23 +14,26 @@
         android:layout_margin="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:textSize="40sp"
-        android:maxLines="1"
+        android:background="@null"
         android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@id/guideline"
         app:layout_constraintEnd_toStartOf="@id/btnDone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0"
-        android:autofillHints="escribir aca" />
+        android:inputType="text"
+        android:hint="Title"
+        android:autofillHints="Title" />
 
     <Button
         android:id="@+id/btnDone"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:text="@string/done_icon"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:text="@string/done_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/edNoteTitle"
         app:layout_constraintTop_toTopOf="parent" />
@@ -46,12 +49,17 @@
         android:id="@+id/edNoteBody"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        tools:text="This is the note body"
         android:layout_margin="8dp"
+        android:background="@null"
+        android:gravity="start"
+        android:inputType="textMultiLine"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline" />
+        app:layout_constraintTop_toTopOf="@id/guideline"
+        tools:text="This is the note body"
+        android:hint="Note Body"
+        android:autofillHints="Body" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
