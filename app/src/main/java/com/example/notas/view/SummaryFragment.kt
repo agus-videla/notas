@@ -1,5 +1,6 @@
 package com.example.notas.view
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,13 +19,17 @@ import com.example.notas.model.NotesDB
 import com.example.notas.recyclerview.NoteRecyclerViewAdapter
 import com.example.notas.utils.ApplicationStates
 import com.example.notas.viewmodel.NotesViewModel
+import com.example.notas.viewmodel.NotesViewModelFactory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.File
 
 class SummaryFragment() : Fragment() {
 
-    private val noteViewModel: NotesViewModel by activityViewModels()
+    private val noteViewModel: NotesViewModel by activityViewModels {
+        NotesViewModelFactory(this.context)
+    }
     private lateinit var llmanager: LinearLayoutManager
     private lateinit var adapter: NoteRecyclerViewAdapter
     private var _binding: FragmentSummaryBinding? = null
@@ -41,17 +46,19 @@ class SummaryFragment() : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnAdd.setOnClickListener {
-            onItemAdded()
-        }
-        lifecycleScope.launch(Dispatchers.Main) {
-            withContext(Dispatchers.IO) { noteViewModel.setNotes() }
-        }
         noteViewModel.loadingState.observe(viewLifecycleOwner, Observer {
             when (it) {
-                is ApplicationStates.Loading -> binding.loadingSpinner.visibility = View.VISIBLE
+                is ApplicationStates.Loading -> {
+                    binding.loadingSpinner.visibility = View.VISIBLE
+                    lifecycleScope.launch(Dispatchers.Main) {
+                        withContext(Dispatchers.IO) { noteViewModel.setNotes() }
+                    }
+                }
                 is ApplicationStates.Success -> {
                     initRecyclerView()
+                    binding.btnAdd.setOnClickListener {
+                        onItemAdded()
+                    }
                     binding.loadingSpinner.visibility = View.GONE
                 }
                 is ApplicationStates.Error -> print("error")
@@ -62,6 +69,11 @@ class SummaryFragment() : Fragment() {
     override fun onDestroyView() {
         _binding = null
         super.onDestroyView()
+    }
+
+    override fun onStop() {
+        noteViewModel.save()
+        super.onStop()
     }
 
     private fun initRecyclerView() {

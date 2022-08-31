@@ -37,4 +37,9 @@ class NoteFragment : Fragment() {
             findNavController().navigate(action)
         }
     }
+
+    override fun onStop() {
+        noteViewModel.save()
+        super.onStop()
+    }
 }

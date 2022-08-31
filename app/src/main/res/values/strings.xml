@@ -1,9 +1,7 @@
 <resources>
-    <string name="app_name">Notas</string>
-    <string name="edit_icon">E</string>
-    <string name="delete_icon">D</string>
-    <string name="add_icon">+</string>
+    <string name="app_name">Notes</string>
+    <string name="edit_button">E</string>
     <string name="delete">Delete</string>
     <string name="add">+</string>
-    <string name="done_icon">D</string>
+    <string name="done_button">D</string>
 </resources>
